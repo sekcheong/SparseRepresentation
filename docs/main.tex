@@ -1,0 +1,111 @@
+\documentclass[12pt]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{physics} 
+\usepackage{bm}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{booktabs,tabularx}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{listings}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\title{Image Denosing via Sparse Representation}
+\author{Sek Cheong, Yihan Li }
+\date{July 11 2019}
+
+\begin{document}
+
+\maketitle
+Sparse and redundant representations \cite{Elad2010SparseModeling} of signals is a fascinating subject which leads to many interesting applications in image processing and computer vision. The sparse modeling can be used to solve an array of image processing problems including denosing\cite{EladAharon2006}, restoration, inpating \cite{ShenHu2009}, compression, classification, and much more. 
+ 
+%\cite{Linhart2014} \cite{Linhart2008}.
+
+In this project we present a basic image processing model using matrix in Matlab. Specifically, we would like to introduce a sparse and redundant representation of image model know as dictionary learning. There are many algorithms used for solvering the dictionary learning model. We would focus on the orthogonal matching pursuit (OMP) \cite{TroppGilbert2007} method in this project. 
+
+A degraded image $\bm{y}$ can be representing as
+ \[ 
+ \bm{y}=\bm{Hx}+\bm{v}
+ \]
+Where $\bm{x}$  is the original image, $\bm{H}$ is a degradation operator, and $\bm{v}$ is a additive linear noise term. The goal is to recovery the original signal $\bm{x}$. Assuming that $\bm{x}$ is from $\bm{D\alpha}$, we need to find $\bm{\alpha}$ and $\bm{D}$ that generates $\bm{y}$. 
+\[
+    \hat{\bm{\alpha}} = \argmin_{\bm{\alpha}}||\bm{\alpha}||_0 \quad
+    \textrm{s.t.} \quad
+    ||\bm{y}-\bm{D}\bm{\alpha}||\le \epsilon
+\]
+\[
+    ||\hat{\alpha}||_0<||\alpha||_0 \implies \hat{\alpha} = \alpha
+\]
+The reconstructed image is given by
+\[
+    \hat{\bm{x}} = \bm{D}\hat{\bm{\alpha}} 
+\]
+%\cite{fractalwiki}.
+
+ %\nocite{higham1998handbook}
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
+
+
+% @article{Linhart2008,
+% Author="J. M. Linhart",
+% Title="Algorithm 885: Computing the logarithm of the normal distribution.",
+% Journal="ACM Transactions on Mathematical Software",
+% Pages="Article 20",
+% Volume=35,
+% Year=2008
+% }
+
+% @misc{vihart,
+%   Title={Pi is (still) wrong},
+%   author={Hart, V. I.},
+%   year={2011},
+%   publisher={YouTube},
+% url = {http://vihart.com/blog/pi-is-still-wrong/}
+% }
+
+% @misc{taumanifesto,
+% Title={The {T}au {M}anifesto},
+% author={Michael Hartl},
+% year={2010},
+% url = {http://tauday.com/}
+% }
+
+% @misc{chaoswiki,
+% Title={Chaos {T}heory},
+% author={Wikipedia},
+% year={2012},
+% url = {http://en.wikipedia.org/Chaos_theory}
+% }
+
+% @misc{fractalwiki,
+% Title={Fractal},
+% author={Wikipedia},
+% year={2012},
+% url = {http://en.wikipedia.org/Fractal}
+% }
+% @article{Linhart2014,
+% author = {Jean Marie Linhart},
+% title = {Teaching Writing and Communication in a Mathematical Modeling Course},
+% journal = {PRIMUS},
+% volume = {24},
+% number = {7},
+% pages = {594-607},
+% year = {2014}
+% }
